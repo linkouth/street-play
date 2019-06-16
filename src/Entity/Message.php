@@ -21,7 +21,8 @@ class Message implements AuthorInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var Place
+     * @ORM\ManyToOne(targetEntity="Place", inversedBy="messages")
      */
     private $place;
 
@@ -50,16 +51,20 @@ class Message implements AuthorInterface
         return $this->id;
     }
 
-    public function getPlace(): ?string
+    /**
+     * @return Place
+     */
+    public function getPlace(): Place
     {
         return $this->place;
     }
 
-    public function setPlace(?string $place): self
+    /**
+     * @param Place $place
+     */
+    public function setPlace(Place $place): void
     {
         $this->place = $place;
-
-        return $this;
     }
 
     public function getText(): ?string
