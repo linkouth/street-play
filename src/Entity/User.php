@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -19,6 +20,8 @@ class User
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Groups("show")
      */
     private $nickname;
 

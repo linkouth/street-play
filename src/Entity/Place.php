@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PlaceRepository")
@@ -14,21 +15,29 @@ class Place
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     *
+     * @Groups("show", "list")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Groups("show", "list")
      */
     private $type;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups("show", "list")
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups("show", "list")
      */
     private $images;
 
@@ -36,6 +45,8 @@ class Place
      * @var ArrayCollection|Message[]
      *
      * @ORM\OneToMany(targetEntity="Message", mappedBy="place")
+     *
+     * @Groups("show")
      */
     private $messages;
 
