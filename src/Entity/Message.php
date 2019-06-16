@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MessageRepository")
+ * @ORM\Table(name="messages")
  */
 class Message implements AuthorInterface
 {
@@ -15,7 +16,7 @@ class Message implements AuthorInterface
 
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
+     * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
     private $id;

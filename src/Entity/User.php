@@ -7,13 +7,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Table(name="users")
  */
 class User
 {
 
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue(strategy="UUID")
+     * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\Column(type="string", length=255)
      */
     private $uuid;
@@ -25,9 +26,22 @@ class User
      */
     private $nickname;
 
+    public function __construct()
+    {
+        $this->uuid = uniqid();
+    }
+
     public function getUuid(): ?string
     {
         return $this->uuid;
+    }
+
+    /**
+     * @param mixed $uuid
+     */
+    public function setUuid($uuid): void
+    {
+        $this->uuid = $uuid;
     }
 
     public function getNickname(): ?string

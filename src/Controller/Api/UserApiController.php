@@ -17,7 +17,7 @@ class UserApiController extends AbstractApiController
      * @param int $id
      * @return Response
      *
-     * @Route("/users/{id}", methods={GET}, requirements={"id"="%d"})
+     * @Route("/users/{id}", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function show(int $id): Response
     {

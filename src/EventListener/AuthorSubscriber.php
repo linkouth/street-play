@@ -5,10 +5,10 @@ namespace App\EventListener;
 
 use App\Helper\AuthorInterface;
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Symfony\Component\EventDispatcher\Tests\Debug\EventSubscriber;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
-class AuthorSubscriber extends EventSubscriber
+class AuthorSubscriber implements EventSubscriberInterface
 {
     private $tokenStorage;
 

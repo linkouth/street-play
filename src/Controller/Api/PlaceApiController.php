@@ -29,7 +29,7 @@ class PlaceApiController extends AbstractApiController
      * @param int $id
      * @return Response
      *
-     * @Route("/places/{id}", methods={"GET"}, requirements={"id"="%d"})
+     * @Route("/places/{id}", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function show(int $id): Response
     {
@@ -82,7 +82,7 @@ class PlaceApiController extends AbstractApiController
      * @param int $id
      * @return Response
      *
-     * @Route("/places/{id}", methods={"DELETE"})
+     * @Route("/places/{id}", methods={"DELETE"},  requirements={"id"="\d+"})
      */
     public function delete(int $id): Response
     {

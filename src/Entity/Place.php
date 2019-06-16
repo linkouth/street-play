@@ -8,36 +8,37 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PlaceRepository")
+ * @ORM\Table(name="places")
  */
 class Place
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
+     * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      *
-     * @Groups("show", "list")
+     * @Groups({"show", "list"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      *
-     * @Groups("show", "list")
+     * @Groups({"show", "list"})
      */
     private $type;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups("show", "list")
+     * @Groups({"show", "list"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups("show", "list")
+     * @Groups({"show", "list"})
      */
     private $images;
 
@@ -46,7 +47,7 @@ class Place
      *
      * @ORM\OneToMany(targetEntity="Message", mappedBy="place")
      *
-     * @Groups("show")
+     * @Groups({"show"})
      */
     private $messages;
 
