@@ -3,8 +3,10 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PlaceRepository")
@@ -44,12 +46,26 @@ class Place
 
     /**
      * @var ArrayCollection|Message[]
+     * @ORM\OrderBy({"createdAt" = "DESC"})
      *
      * @ORM\OneToMany(targetEntity="Message", mappedBy="place")
      *
      * @Groups({"show", "list"})
      */
     private $messages;
+
+    /**
+     * @SerializedName("lastTime")
+     * @Groups({"show", "list"})
+     */
+    public function getLastMessageTime()
+    {
+        $lastTime = null;
+        if ($this->messages->count() > 0) {
+            $lastTime = $this->messages->first()->getCreatedAt();
+        }
+        return $lastTime;
+    }
 
     public function __construct()
     {
