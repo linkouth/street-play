@@ -14,26 +14,26 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserApiController extends AbstractApiController
 {
     /**
-     * @param int $id
+     * @param $id
      * @return Response
      *
-     * @Route("/users/{id}", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/users/{id}", methods={"GET"})
      */
-    public function show(int $id): Response
+    public function show($id): Response
     {
         $user = $this->getDoctrine()->getManager()->getRepository(User::class)->find($id);
 
         if ($user) {
             $json = $this->serializer->serialize(
                 [
-                    "nickname" => $user->getSurname(),
+                    "nickname" => $user->getNickname(),
                 ],
                 "json",
                 ['groups' => ["show"]]
             );
             return $this->createResponse($json);
         } else {
-            $this->createResponse(null);
+            return $this->createResponse(null);
         }
     }
 }

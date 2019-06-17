@@ -21,7 +21,6 @@ class SecurityApiController extends AbstractApiController
     public function registrationAction(Request $request): Response
     {
         $content = json_decode($request->getContent(), true);
-//        var_dump($content);
         if ($content != null) {
             $user = new User();
             $user->setNickname($content['nickname']);

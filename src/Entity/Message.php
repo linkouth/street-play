@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Helper\AuthorInterface;
 use App\Helper\AuthorTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MessageRepository")
@@ -18,6 +19,8 @@ class Message implements AuthorInterface
      * @ORM\Id()
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     *
+     * @Groups({"show", "list"})
      */
     private $id;
 
@@ -29,16 +32,22 @@ class Message implements AuthorInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({"show", "list"})
      */
     private $text;
 
     /**
      * @ORM\Column(type="integer")
+     *
+     * @Groups({"show", "list"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Groups({"show", "list"})
      */
     private $author;
 

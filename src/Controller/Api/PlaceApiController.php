@@ -36,7 +36,8 @@ class PlaceApiController extends AbstractApiController
         $entity = $this->getDoctrine()
             ->getRepository(Place::class)
             ->find($id);
-
+        $messages = $entity->getMessages();
+        $jsonMessages = $this->serializer->serialize($messages, "json", ['groups' => ["show"]]);
         $json = $this->serializer->serialize($entity,"json", ['groups' => ["show"]]);
         return $this->createResponse($json);
     }

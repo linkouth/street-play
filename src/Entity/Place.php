@@ -47,7 +47,7 @@ class Place
      *
      * @ORM\OneToMany(targetEntity="Message", mappedBy="place")
      *
-     * @Groups({"show"})
+     * @Groups({"show", "list"})
      */
     private $messages;
 
